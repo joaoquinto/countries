@@ -66,6 +66,20 @@ export default {
   box-sizing: border-box;
 }
 
+img {
+  display: block;
+}
+
+:root {
+  --Dark-Blue: hsl(209, 23%, 22%);
+  --Very-Dark-Blue-Background: hsl(207, 26%, 17%);
+  --Dark-Gray-input: hsl(0, 0%, 52%);
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --VeryDark-Blue-Light-Mode-Text: hsl(200, 15%, 8%);
+  --White-text: hsl(0, 0%, 100%);
+  --font: "Nunito Sans", sans-serif;
+}
+
 body {
   font-family: var(--font);
 }
