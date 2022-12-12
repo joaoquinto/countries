@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div @click="goBack">
     <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
       <path
         d="m12 20-8-8 8-8 1.425 1.4-5.6 5.6H20v2H7.825l5.6 5.6Z"
-        :fill="color"
+        fill="#000"
       />
     </svg>
     <p>Back</p>
@@ -11,13 +11,37 @@
 </template>
 
 <script>
+import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+
 export default {
   name: "ArrowIcon",
-  props: {
-    color: {
-      required: true,
-      type: String,
-    },
+  setup() {
+    const themeMode = localStorage.getItem("themeMode");
+    const router = new useRouter();
+    const color = ref();
+
+    function goBack() {
+      router.push("/");
+    }
+
+    function setThemeMode() {
+      if (themeMode == "dark") {
+        color.value = "#fff";
+      } else {
+        color.value = "#000";
+      }
+    }
+
+    onMounted(() => {
+      setThemeMode();
+    });
+    return {
+      color,
+      setThemeMode,
+      themeMode,
+      goBack,
+    };
   },
 };
 </script>

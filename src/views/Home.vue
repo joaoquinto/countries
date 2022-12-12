@@ -6,6 +6,7 @@
           type="text"
           placeholder="Search for a country..."
           v-model="searchCountry"
+          autofocus
         />
         <small v-if="warningMenssage"
           >Please check if you writen the name rightly</small
@@ -21,7 +22,7 @@
       </select>
     </div>
   </section>
-  <section class="container-countries">
+  <section class="container-countries" v-show="countries.length > 0">
     <div v-for="(country, index) in countries" :key="index" class="country">
       <CardCountryVue :country="country" />
     </div>
