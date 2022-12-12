@@ -121,6 +121,10 @@ button {
   margin-bottom: 2.5rem;
 }
 
+section {
+  padding: 20px 0;
+}
+
 h1 {
   margin-top: 1.875rem;
   margin-bottom: 1.25rem;
@@ -142,12 +146,14 @@ h1 {
 .borders > ul {
   display: flex;
   justify-content: baseline;
+  flex-wrap: wrap;
   align-items: center;
   margin-left: 0.3125rem;
+  gap: 10px;
 }
 
-.borders > ul li + li {
-  margin-left: 5px;
+.borders > ul li {
+  width: max-content;
 }
 
 .boxcontent {
@@ -180,9 +186,11 @@ h1 {
   .information {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
   }
 
   .more-information {
+    margin-top: 0.9375rem;
     flex: 1;
     display: flex;
     align-items: baseline;
@@ -191,8 +199,12 @@ h1 {
     flex: 2;
   }
 
+  .borders {
+    align-self: flex-end;
+  }
+
   img {
-    width: 40%;
+    width: 45%;
   }
 }
 
