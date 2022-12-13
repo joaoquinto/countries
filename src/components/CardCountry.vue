@@ -1,5 +1,8 @@
 <template>
-  <div @click="MoreInformation(country?.name?.common)">
+  <div
+    @click="MoreInformation(country?.name?.common)"
+    data-cy="MoreInformation"
+  >
     <img :src="country?.flags?.png" alt="" />
     <h3>{{ country?.name?.common }}</h3>
     <p><strong>Population:</strong> {{ country?.population }}</p>

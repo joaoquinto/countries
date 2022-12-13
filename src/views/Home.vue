@@ -3,6 +3,7 @@
     <div class="container-search">
       <div class="search">
         <input
+          data-cy="SearchByName"
           type="text"
           placeholder="Search for a country..."
           v-model="searchCountry"
@@ -12,7 +13,7 @@
           >Please check if you writen the name rightly</small
         >
       </div>
-      <select v-model="serchByRegion">
+      <select v-model="serchByRegion" data-cy="SelectByRegion">
         <option value="">Filter by Region</option>
         <option>Africa</option>
         <option>America</option>
