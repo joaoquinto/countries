@@ -1,6 +1,8 @@
 describe("Darkmode", () => {
   it("checking the change of state of darkmode theme", () => {
-    cy.viewport("macbook-16").visit("http://localhost:8080/");
+    cy.viewport("macbook-16").visit(
+      "https://eloquent-blini-38b6eb.netlify.app/"
+    );
 
     cy.get('[data-cy="darkModeTheme"]').as("darkModeButton");
 
@@ -9,7 +11,7 @@ describe("Darkmode", () => {
       .getAllLocalStorage()
       .then((result) => {
         expect(result).to.deep.equal({
-          "http://localhost:8080": {
+          "https://eloquent-blini-38b6eb.netlify.app": {
             themeMode: "dark",
           },
         });
@@ -19,7 +21,7 @@ describe("Darkmode", () => {
       .getAllLocalStorage()
       .then((result) => {
         expect(result).to.deep.equal({
-          "http://localhost:8080": {
+          "https://eloquent-blini-38b6eb.netlify.app": {
             themeMode: "light",
           },
         });
@@ -27,7 +29,7 @@ describe("Darkmode", () => {
   });
   it("Cheking backgroundcolor", () => {
     cy.viewport("iphone-x")
-      .visit("http://localhost:8080/")
+      .visit("https://eloquent-blini-38b6eb.netlify.app/")
       .get('[data-cy="darkModeTheme"]')
       .click()
       .get("body")
@@ -42,13 +44,13 @@ describe("Darkmode", () => {
 describe("Routes", () => {
   it("Change route to country", () => {
     cy.viewport("samsung-s10")
-      .visit("http://localhost:8080/country/Mauritania")
+      .visit("https://eloquent-blini-38b6eb.netlify.app/country/Mauritania")
       .get('[data-cy="darkModeTheme"]')
       .click();
   });
   it("Change the route to /", () => {
     cy.viewport("samsung-s10")
-      .visit("http://localhost:8080/country/Mauritania")
+      .visit("https://eloquent-blini-38b6eb.netlify.app/country/Mauritania")
       .get('[data-cy="goBack"]')
       .click();
   });
