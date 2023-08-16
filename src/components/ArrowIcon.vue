@@ -26,7 +26,7 @@ export default {
     }
 
     function setThemeMode() {
-      if (themeMode == "dark") {
+      if (themeMode === "dark") {
         color.value = "#fff";
       } else {
         color.value = "#000";
@@ -38,7 +38,6 @@ export default {
     });
     return {
       color,
-      setThemeMode,
       themeMode,
       goBack,
     };
@@ -57,7 +56,6 @@ p {
   margin-left: 9px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
