@@ -13,7 +13,7 @@
           >Please check if you writen the name rightly</small
         >
       </div>
-      <select v-model="serchByRegion" data-cy="SelectByRegion">
+      <select v-model="searchByRegion" data-cy="SelectByRegion">
         <option value="">Filter by Region</option>
         <option>Africa</option>
         <option>America</option>
@@ -42,23 +42,24 @@ export default {
   setup() {
     const countries = ref([]);
     const searchCountry = ref("");
-    const serchByRegion = ref("");
+    const searchByRegion = ref("");
     const warningMenssage = ref(false);
 
     onMounted(() => {
+      console.log("rodou o onMouted");
       getAllCountries();
     });
 
     watch(searchCountry, (newValue) => {
-      console.log(newValue.length == 0);
-      if (newValue.length == 0) {
+      console.log(newValue.length === 0);
+      if (newValue.length === 0) {
         getAllCountries();
       } else if (newValue.length !== 0) {
         getCountryByName(newValue);
       }
     });
 
-    watch(serchByRegion, (newValue) => {
+    watch(searchByRegion, (newValue) => {
       getCountriesByRegion(newValue);
     });
 
@@ -76,7 +77,7 @@ export default {
       await fetch(`https://restcountries.com/v3.1/name/${name}`)
         .then((response) => response.json())
         .then((response) => {
-          if (response.status == 404) {
+          if (response.status === 404) {
             warningMenssage.value = true;
           }
           countries.value = response;
@@ -91,7 +92,7 @@ export default {
           countries.value = response;
         });
     }
-    return { searchCountry, warningMenssage, serchByRegion, countries };
+    return { searchCountry, warningMenssage, searchByRegion, countries };
   },
 };
 </script>

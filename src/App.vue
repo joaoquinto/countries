@@ -2,11 +2,7 @@
   <header>
     <nav>
       <h1>Where in the World</h1>
-      <MoonIconVue
-        @click="darkMode"
-        :color="THEME_MODE ? '#fff' : '#000'"
-        data-cy="darkModeTheme"
-      />
+      <MoonIconVue @click="darkMode" :color="THEME_MODE ? '#fff' : '#000'" />
     </nav>
   </header>
   <router-view />
