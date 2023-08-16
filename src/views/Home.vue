@@ -23,7 +23,7 @@
       </select>
     </div>
   </section>
-  <section class="container-countries" v-show="countries.length > 0">
+  <section class="container-countries">
     <div v-for="(country, index) in countries" :key="index" class="country">
       <CardCountryVue :country="country" />
     </div>
