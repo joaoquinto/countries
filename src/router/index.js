@@ -14,7 +14,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory("https://countries-sable-five.vercel.app"),
+  history: createWebHistory(process.env.BASE_URL),
   routes,
 });
 
