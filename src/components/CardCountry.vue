@@ -35,12 +35,17 @@ export default {
 div {
   cursor: pointer;
   width: 100%;
-  min-height: 390px;
+  height: 390px;
   padding-bottom: 2.5rem;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   box-shadow: 0 1px 5px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 14%),
     0 3px 1px -2px rgb(0 0 0 / 12%);
+}
+
+img {
+  height: 160px;
+  width: 320px;
 }
 
 @media (min-width: 1300px) {
