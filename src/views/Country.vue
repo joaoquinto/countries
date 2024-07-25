@@ -205,7 +205,8 @@ h1 {
   }
 
   img {
-    width: 45%;
+    width: 500px;
+    height: 400px;
   }
 }
 
