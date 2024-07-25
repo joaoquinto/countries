@@ -142,7 +142,7 @@ select {
 }
 
 select > option {
-  font-family: var(--font) sans-serif;
+  font-family: var(--font);
   padding: 8px;
 }
 
