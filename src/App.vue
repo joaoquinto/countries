@@ -81,7 +81,7 @@ img {
 }
 
 body {
-  font-family: var(--font);
+  font-family: var(--font) sans-serif;
 }
 
 header {
