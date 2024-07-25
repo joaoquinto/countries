@@ -9,8 +9,8 @@
           v-model="searchCountry"
           autofocus
         />
-        <small v-if="warningMenssage"
-          >Please check if you writen the name rightly</small
+        <small v-if="warningMessage"
+          >Please check if you written the name rightly</small
         >
       </div>
       <select v-model="searchByRegion" data-cy="SelectByRegion">
@@ -43,20 +43,18 @@ export default {
     const countries = ref([]);
     const searchCountry = ref("");
     const searchByRegion = ref("");
-    const warningMenssage = ref(false);
+    const warningMessage = ref(false);
 
     onMounted(() => {
-      console.log("rodou o onMouted");
       getAllCountries();
     });
 
     watch(searchCountry, (newValue) => {
-      console.log(newValue.length === 0);
       if (newValue.length === 0) {
         getAllCountries();
-      } else if (newValue.length !== 0) {
-        getCountryByName(newValue);
+        return;
       }
+      getCountryByName(newValue);
     });
 
     watch(searchByRegion, (newValue) => {
@@ -68,7 +66,7 @@ export default {
         .then((response) => response.json())
         .then((response) => {
           countries.value = response;
-          warningMenssage.value = false;
+          warningMessage.value = false;
         })
         .catch((error) => console.log(error));
     }
@@ -78,7 +76,9 @@ export default {
         .then((response) => response.json())
         .then((response) => {
           if (response.status === 404) {
-            warningMenssage.value = true;
+            warningMessage.value = true;
+            countries.value = [];
+            return;
           }
           countries.value = response;
         })
@@ -86,13 +86,19 @@ export default {
     }
 
     async function getCountriesByRegion(region) {
+      if (!region) {
+        await getAllCountries();
+        return;
+      }
+
       await fetch(`https://restcountries.com/v3.1/region/${region}`)
         .then((response) => response.json())
         .then((response) => {
           countries.value = response;
         });
     }
-    return { searchCountry, warningMenssage, searchByRegion, countries };
+
+    return { searchCountry, warningMessage, searchByRegion, countries };
   },
 };
 </script>
@@ -134,6 +140,11 @@ small {
 select {
   margin-top: 1.875rem;
   width: 60%;
+}
+
+select > option {
+  font-family: var(--font) sans-serif;
+  padding: 8px;
 }
 
 body.dark input,

@@ -181,6 +181,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 8px;
   }
 
   .information {
@@ -204,7 +205,8 @@ h1 {
   }
 
   img {
-    width: 45%;
+    width: 500px;
+    height: 400px;
   }
 }
 
