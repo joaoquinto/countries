@@ -10,7 +10,7 @@
           autofocus
         />
         <small v-if="warningMenssage"
-          >Please check if you writen the name rightly</small
+          >Please check if you written the name rightly</small
         >
       </div>
       <select v-model="searchByRegion" data-cy="SelectByRegion">
@@ -46,17 +46,15 @@ export default {
     const warningMenssage = ref(false);
 
     onMounted(() => {
-      console.log("rodou o onMouted");
       getAllCountries();
     });
 
     watch(searchCountry, (newValue) => {
-      console.log(newValue.length === 0);
       if (newValue.length === 0) {
         getAllCountries();
-      } else if (newValue.length !== 0) {
-        getCountryByName(newValue);
+        return;
       }
+      getCountryByName(newValue);
     });
 
     watch(searchByRegion, (newValue) => {
@@ -79,6 +77,8 @@ export default {
         .then((response) => {
           if (response.status === 404) {
             warningMenssage.value = true;
+            countries.value = [];
+            return;
           }
           countries.value = response;
         })
@@ -86,6 +86,11 @@ export default {
     }
 
     async function getCountriesByRegion(region) {
+      if (!region) {
+        await getAllCountries();
+        return;
+      }
+
       await fetch(`https://restcountries.com/v3.1/region/${region}`)
         .then((response) => response.json())
         .then((response) => {
@@ -134,6 +139,11 @@ small {
 select {
   margin-top: 1.875rem;
   width: 60%;
+}
+
+select > option {
+  font-family: var(--font);
+  padding: 8px;
 }
 
 body.dark input,
