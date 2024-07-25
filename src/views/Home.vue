@@ -9,7 +9,7 @@
           v-model="searchCountry"
           autofocus
         />
-        <small v-if="warningMenssage"
+        <small v-if="warningMessage"
           >Please check if you written the name rightly</small
         >
       </div>
@@ -43,7 +43,7 @@ export default {
     const countries = ref([]);
     const searchCountry = ref("");
     const searchByRegion = ref("");
-    const warningMenssage = ref(false);
+    const warningMessage = ref(false);
 
     onMounted(() => {
       getAllCountries();
@@ -66,7 +66,7 @@ export default {
         .then((response) => response.json())
         .then((response) => {
           countries.value = response;
-          warningMenssage.value = false;
+          warningMessage.value = false;
         })
         .catch((error) => console.log(error));
     }
@@ -76,7 +76,7 @@ export default {
         .then((response) => response.json())
         .then((response) => {
           if (response.status === 404) {
-            warningMenssage.value = true;
+            warningMessage.value = true;
             countries.value = [];
             return;
           }
@@ -97,7 +97,7 @@ export default {
           countries.value = response;
         });
     }
-    return { searchCountry, warningMenssage, searchByRegion, countries };
+    return { searchCountry, warningMessage, searchByRegion, countries };
   },
 };
 </script>
@@ -142,7 +142,7 @@ select {
 }
 
 select > option {
-  font-family: var(--font);
+  font-family: var(--font) sans-serif;
   padding: 8px;
 }
 
